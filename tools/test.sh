@@ -2,9 +2,11 @@
 
 #This script downloads single file produced by laliste from each short term worker
 
+now="$(date +'%d-%m-%Y')"
 
 
-echo "My argument is $1"
+
+echo "$now"
 
 for i in {200..217}
 do

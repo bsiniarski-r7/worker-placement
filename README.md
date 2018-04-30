@@ -55,7 +55,9 @@ This will create a folder called laliste-tokens with files containing tokens onl
 Tokens may be duplicated. For example a log set may be split into 3 files on a single worker just like this:
 
 log/65/65/7443-932f-4444-b986-f80976ff81b9/180428-000000-000.indexer118.log
+
 log/65/65/7443-932f-4444-b986-f80976ff81b9/180428-000000-000.indexer100.log
+
 log/65/65/7443-932f-4444-b986-f80976ff81b9/180428-000000-000.indexer104.log
 
 We are only interested to find out where the following is placed, and not in how many files it is split to:

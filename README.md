@@ -1,7 +1,14 @@
 # worker-placement
 by Bart Siniarski
 
-Set of tools and scripts to understand the placement of files on short term workers (w200 - w217)
+Set of tools and scripts to understand the placement of files on short term workers (w200 - w217). In order to find placement you need to do the following:
+
+1. run download-worker-data.sh to download laliste outputs
+2. run extract-tokens.py to extract tokens from downloaded files
+3. run remove-duplicates to further clean data
+4. populate file named <i>test-population</i> with token you want to search for. You can get those tokens from laliste-tokens folder created after step 2.
+5. run find-placement.py to find placement of logs from <i>test-population</i> file on all of the workers
+
 
 # Tools:
 ## download-worker-data.sh
@@ -38,8 +45,27 @@ Valid date arguments:   AM and PM hours using 24-hours format i.e. 15 for 3pm
 Extract only those tokens that contain the .log extension from a specific laliste-data directory
 
 <b>To run:</b>
-Assuming that <b>29-04-2018-data</b> folder exists and is populated with laliste date, you can do:
+Assuming that <b>29-04-2018-data</b> folder exists and is populated with laliste outputs, you can do:
 
-<pre>python extract-tokens <b>29-04-2018</b></pre>
+<pre>python extract-tokens.py <b>29-04-2018</b></pre>
 
-This will create a folder called laliste-tokens and with files containing tokens only. Each file should be significantly smaller compared to original laliste outputs. For example 1.5Gb is reduced to approximately 50MB
+This will create a folder called laliste-tokens with files containing tokens only. Each file should be significantly smaller compared to original laliste outputs. For example 1.5Gb is reduced to approximately 50MB
+
+## remove-duplicates.py
+Tokens may be duplicated. For example a log set may be split into 3 files on a single worker just like this:
+
+log/65/65/7443-932f-4444-b986-f80976ff81b9/180428-000000-000.indexer118.log
+log/65/65/7443-932f-4444-b986-f80976ff81b9/180428-000000-000.indexer100.log
+log/65/65/7443-932f-4444-b986-f80976ff81b9/180428-000000-000.indexer104.log
+
+We are only interested to find out where the following is placed, and not in how many files it is split to:
+
+log/65/65/7443-932f-4444-b986-f80976ff81b9/180428
+
+<b>To run:</b>
+<pre>python remove-duplicates.py <b>29-04-2018</b></pre>
+
+## find-placement.py
+Finally, you can use this script to find placement of logs.
+
+1. Firstly, you need to populate a file called 'test-population' with logs that you wish to search for. This file is created by remove-duplicates.py script at the end of execution, so you don't have to do it manually.

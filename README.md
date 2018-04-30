@@ -1,14 +1,14 @@
 # worker-placement
 by Bart Siniarski
 
-Set of tools and scripts to understand the placement of files on short term workers (w200 - 217)
+Set of tools and scripts to understand the placement of files on short term workers (w200 - w217)
 
 # Tools:
 ## download-worker-data.sh
 
 This tool is used to download TODAY's laliste output in a raw format - as it is stored on the short term workers. The copy is saved locally into a folder named "laliste-data". Laliste produces a new file every hour, hence we are letting you specify the time of the day and the number of workers to download.
 
-**Run with sudo:**
+<b>Run with sudo:</b>
 <pre>
 download-laliste.sh <b>time</b> <b>worker_start</b> <b>worker_end</b>
 </pre>
@@ -33,3 +33,13 @@ download-worker-data.sh 10 202 205
 </pre>
 
 Valid date arguments:   AM and PM hours using 24-hours format i.e. 15 for 3pm
+
+## extract-tokens.py
+Extract only those tokens that contain the .log extension from a specific laliste-data directory
+
+<b>To run:</b>
+Assuming that <b>29-04-2018-data</b> folder exists and is populated with laliste date, you can do:
+
+<pre>python extract-tokens <b>29-04-2018</b></pre>
+
+This will create a folder called laliste-tokens and with files containing tokens only. Each file should be significantly smaller compared to original laliste outputs. For example 1.5Gb is reduced to approximately 50MB

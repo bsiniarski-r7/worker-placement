@@ -71,3 +71,8 @@ log/65/65/7443-932f-4444-b986-f80976ff81b9/180428
 Finally, you can use this script to find placement of logs.
 
 1. Firstly, you need to populate a file called 'test-population' with logs that you wish to search for. This file is created by remove-duplicates.py script at the end of execution, so you don't have to do it manually.
+
+2. Then run:
+<pre>python find-placement.py <b>29-04-2018</b></pre>
+
+3. Results will be saved in results folder in a file named "placement"

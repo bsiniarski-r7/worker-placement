@@ -12,7 +12,6 @@ original = sorted(original)
 
 print original
 
-
 for o in original:
     print "Removing duplicates from " + str(o)
     with open('../laliste-tokens/%s-tokens/%s' % (date,o), "r") as fobj:
@@ -34,7 +33,10 @@ for o in original:
                     lines_seen.add(line)
             outp.close()
 
+
+
+
 if not os.path.exists('../test_population'):
-    f = file('../test_population')
+    f = open('../test_population', 'w')
 else:
-    f = file('../test_population')
+    f = open('../test_population', 'w')

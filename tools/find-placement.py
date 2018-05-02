@@ -12,15 +12,15 @@ date = sys.argv[1]
 tokens = [t for t in listdir(('../laliste-tokens-grouped/%s-grouped') % date)]
 
 
-if not os.path.exists(os.path.dirname('../results/placement')):
+if not os.path.exists(os.path.dirname('../results/placement-%s' % date)):
     try:
-        os.makedirs(os.path.dirname('../results/placement'))
+        os.makedirs(os.path.dirname('../results/placement-%s' % date))
     except OSError as exc: # Guard against race condition
         if exc.errno != errno.EEXIST:
             raise
 
 
-with open('../results/placement', "a") as outp:
+with open('../results/placement-%s' % date, "a") as outp:
 
     #total_selected is a number of log files in test population
     total_selected = 0
@@ -28,7 +28,8 @@ with open('../results/placement', "a") as outp:
     total_count = 0
     #We find if a token exists only in our test worker or if it exists in other workers too
     for line in open('../test_population'):
-        print "Matching " + str(total_selected)
+        percent = float(total_selected)/100000.0*100
+        print str(round(percent,2))+  "% Matching " + str(total_selected)
         total_selected = total_selected + 1
         count = 0
         token_placement = []
@@ -41,11 +42,8 @@ with open('../results/placement', "a") as outp:
 
         total_count = total_count + count
 
-        #The structure is as follows : [token, count, workers...]
-        #token_placement.insert(0, line.strip('\n'))
-        #token_placement.insert(1, count)
 
-        #The structure is now updated to : [token, date, count, workers 1...n]
+        #The structure is now updated to : [token, count, workers 1...n]
         token_placement.insert(0, line.strip('\n'))
         token_placement.insert(1, count)
 
@@ -57,5 +55,5 @@ with open('../results/placement', "a") as outp:
         outp.write(str(token_placement)[1 : -1] + "\n")
 
 
-    outp.write("Total number of files searched = " + str(total_selected)+ "\n")
-    outp.write("Average placement count per files = " + str(float(total_count)/float(total_selected))+ "\n")
+    #outp.write("Total number of files searched = " + str(total_selected)+ "\n")
+    #outp.write("Average placement count per files = " + str(float(total_count)/float(total_selected))+ "\n")

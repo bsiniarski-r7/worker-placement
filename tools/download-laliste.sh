@@ -1,6 +1,6 @@
 #!/bin/bash
-
 #This script will download laliste file from a specific set of workers and save it into "laliste-data" folder
+
 export AWS_PROFILE=awsaml-086403773823
 export AWS_DEFAULT_PROFILE=awsaml-086403773823
 

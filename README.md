@@ -80,6 +80,6 @@ Finally, you can use this script to find placement of logs.
 
 ## Sample output
 
-![alt text](link "Sample output for 20,000 samples)
+![alt text](https://github.com/bsiniarski-r7/worker-placement/blob/master/graphs/placementes-100000-samples.png "Sample output for 20,000 samples)
 
-![alt text](link "Sample output for 100,000 samples)
+![alt text](https://github.com/bsiniarski-r7/worker-placement/blob/master/graphs/placementes-20000-samples.png "Sample output for 100,000 samples)

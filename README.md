@@ -76,3 +76,10 @@ Finally, you can use this script to find placement of logs.
 <pre>python find-placement.py <b>29-04-2018</b></pre>
 
 3. Results will be saved in results folder in a file named "placement"
+
+
+## Sample output
+
+![alt text](link "Sample output for 20,000 samples)
+
+![alt text](link "Sample output for 100,000 samples)
